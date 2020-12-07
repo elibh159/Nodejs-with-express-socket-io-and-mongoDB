@@ -6,7 +6,12 @@ app.listen(5000);
 
 
 app.get('/', (req, res) => {
-  res.render('index')
+  const items = [
+    { name: 'mobile phone', price: 1000 },
+    { name: 'book', price: 30 },
+    { name: 'computer', price: 2000 }
+  ]
+  res.render('index', { items })
 })
 
 app.get('/add-item', (req, res) => {

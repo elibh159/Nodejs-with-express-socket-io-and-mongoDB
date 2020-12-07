@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const mongodb = 'mongodb+srv://elibh:password123@cluster0.iscuv.mongodb.net/<dbname>?retryWrites=true&w=majority';
 app.set('view engine', 'ejs');
 app.listen(5000);
 

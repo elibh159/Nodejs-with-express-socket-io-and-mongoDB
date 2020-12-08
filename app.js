@@ -50,7 +50,7 @@ app.get('/items/:id', (req, res) => {
   const id = req.params.id;
   Item.findById(id).then(result => {
     console.log('result', result);
-    res.result('item-detail', { item: result })
+    res.render('item-detail', { item: result })
   })
 })
 

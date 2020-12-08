@@ -57,8 +57,8 @@ app.get('/items/:id', (req, res) => {
 app.delete('/items/:id', (req, res) => {
   const id = req.params.id;
   Item.findByIdAndDelete(id).then(result => {
-    res.redirect('/get-items')
-  }).catch(err => console.log(err))
+    res.json({ redirect: '/get-items' })
+  })
 })
 
 app.use((req, res) => {

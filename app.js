@@ -14,18 +14,7 @@ mongoose.connect(mongodb, {
 app.set('view engine', 'ejs');
 
 
-app.get('/create-item', (req, res) => {
-  const item = new Item({
-    name: 'computer',
-    price: 2000
-  });
-  item.save().then(result => res.send(result)).catch(err => console.log(err))
-})
 
-app.get('/get-items', (req, res) => {
-  Item.find().then(result => res.send(result)).catch(err => console.log(err))
-
-})
 
 app.get('/get-item', (req, res) => {
   Item.findById("5fcf3da401f19b298c0b7106").then(result => res.send(result)).catch(err => console.log(err))
@@ -34,12 +23,13 @@ app.get('/get-item', (req, res) => {
 
 
 app.get('/', (req, res) => {
-  const items = [
-    { name: 'mobile phone', price: 1000 },
-    { name: 'book', price: 30 },
-    { name: 'computer', price: 2000 }
-  ]
-  res.render('index', { items })
+  res.redirect('/get-items');
+})
+
+app.get('/get-items', (req, res) => {
+  Item.find().then(result =>
+    res.render('index', { items: result })
+  ).catch(err => console.log(err))
 })
 
 app.get('/add-item', (req, res) => {

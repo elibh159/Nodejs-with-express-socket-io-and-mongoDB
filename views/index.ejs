@@ -9,7 +9,9 @@
         <%items.forEach(item => {%>
         <li class="collection-item">
           <div>
-            <%=item.name %> $ <%=item.price%>
+            <a href="/items/<%=item._id%>">
+              <%=item.name %> $ <%=item.price%>
+            </a>
             <a
               href="#!"
               class="secondary-content"

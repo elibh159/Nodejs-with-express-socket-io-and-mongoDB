@@ -1,8 +1,15 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const app = express();
-const mongodb = 'mongodb+srv://elibh:password123@cluster0.iscuv.mongodb.net/<dbname>?retryWrites=true&w=majority';
+const mongodb = 'mongodb+srv://sa:Password123@cluster0.iscuv.mongodb.net/item-database?retryWrites=true&w=majority';
+mongoose.connect(mongodb, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then(() => {
+  console.log('connected')
+  app.listen(5000);
+}).catch(err => console.log(err))
 app.set('view engine', 'ejs');
-app.listen(5000);
 
 
 

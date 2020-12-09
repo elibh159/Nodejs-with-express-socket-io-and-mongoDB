@@ -1,5 +1,5 @@
-# Nodejs-with-express-socket-io-and-mongoDB
-Nodejs with express,socket io and mongoDB
+# Nodejs-with-express-and-mongoDB
+Nodejs with express and mongoDB
 
 What is NodeJS ?
 
@@ -18,12 +18,4 @@ Node.js is a robust project that won’t be going anywhere
 What is this project?
 Build the backend with NodeJS for your website and mobile app
 Use Modern JavaScript es6
-Implement CRUD operations
-Implement Authentication with JWT
-NodeJS Basic and Basic Core Modules
-Parsing requests and sending responses
-Using express js
-Building REST APIs
-Building a Realtime Node js App with Socket io
-Deploy Node JS Application
 

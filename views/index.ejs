@@ -24,6 +24,7 @@
               <i
                 class="material-icons modal-trigger"
                 href="#edit_item_modal"
+                data-id="<%= item._id %>"
                 >edit</i
               >
             </a>
@@ -56,6 +57,7 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
+      var updateId;
       document.addEventListener(
         "DOMContentLoaded",
         function () {
@@ -66,11 +68,40 @@
         }
       );
 
+      edit_form.onsubmit = async function (e) {
+        e.preventDefault();
+        let data = new FormData(edit_form);
+        // for (var pair of data.entries()) {
+        //     console.log(pair[0] + ', ' + pair[1]);
+        // }
+        let response = await fetch(
+          `/items/${updateId}`,
+          {
+            method: "PUT",
+            body: new URLSearchParams(data),
+            headers: new Headers({
+              "Content-type":
+                "application/x-www-form-urlencoded; charset=UTF-8",
+            }),
+          }
+        );
+        let result = await response.json();
+        edit_form.reset();
+        window.location.reload();
+        alert(result.msg);
+      };
+
       itemContainer.onclick = function (e) {
         console.log(
           "e.target.textContent",
           e.target.textContent
         );
+        if (e.target.textContent === "edit") {
+          updateId = e.target.getAttribute(
+            "data-id"
+          );
+          console.log(updateId);
+        }
         if (e.target.textContent === "delete") {
           // const id = deleteBtn.dataset.id
           const id = e.target.getAttribute(
